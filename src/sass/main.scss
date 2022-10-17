@@ -1,0 +1,214 @@
+@use "./abstracts/" as *;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&family=Karla:wght@700&display=swap");
+
+@each $key, $val in $font-family {
+    .ff-#{$key} {
+        font-family: $val;
+    }
+}
+
+@each $key, $val in $font-weights {
+    .fw-#{$key} {
+        font-weight: $val;
+    }
+}
+
+@each $key, $val in $colors {
+    .clr-#{$key} {
+        color: $val;
+    }
+}
+
+@each $key, $val in $background-colors {
+    .bg-#{$key} {
+        background-color: $val;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+}
+
+.fade {
+    opacity: 0.5;
+}
+
+.disable-cursor {
+    cursor: not-allowed;
+}
+
+.default-cursor {
+    cursor: default;
+}
+
+.main {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.blob {
+    position: absolute;
+    z-index: -1;
+
+    &-top {
+        top: rem(-150);
+        right: rem(-150);
+    }
+
+    &-bottom {
+        bottom: rem(-50);
+        left: rem(-80);
+    }
+}
+
+.start {
+    &-container {
+        display: grid;
+        place-content: center;
+        min-height: 100vh;
+        text-align: center;
+    }
+
+    &-text {
+        font-size: rem(31);
+    }
+
+    &-btn {
+        font-size: rem(16);
+        width: rem(193);
+        height: rem(52);
+        border-radius: rem(15);
+    }
+}
+
+.quiz {
+    &-container {
+        max-width: map-get($breakpoints, "large");
+        margin: 0 auto;
+        min-height: 100vh;
+        padding: rem(14) rem(20) rem(30);
+
+        @include media-query(em(500)) {
+            padding: rem(20) rem(30) rem(30);
+        }
+
+        @include media-query("large") {
+            padding: rem(30) rem(30) rem(35);
+        }
+    }
+
+    &-loading {
+        font-size: rem(16);
+        font-family: map-get($font-family, "primary");
+        font-weight: map-get($font-weights, "semibold");
+        color: map-get($colors, "primary");
+        text-align: center;
+
+        @include media-query("medium") {
+            font-size: rem(20);
+        }
+    }
+
+    &-item {
+        padding-bottom: rem(20);
+        border-bottom: rem(1) solid color("hr");
+    }
+
+    &-question {
+        font-size: rem(16);
+
+        @include media-query("medium") {
+            font-size: rem(19);
+        }
+    }
+
+    &-answers {
+        @include media-query("medium") {
+            display: flex;
+        }
+    }
+
+    &-answer {
+        display: block;
+        width: 100%;
+        font-size: rem(13);
+        padding: rem(12);
+        border-radius: rem(13);
+
+        &:not(:last-child) {
+            margin-bottom: rem(8);
+        }
+
+        &:not(.bg-selected):not(.bg-correct):not(.bg-wrong) {
+            outline: 1px solid color("btn");
+            outline-offset: -2px;
+        }
+
+        @include media-query("medium") {
+            display: inline-block;
+            width: auto;
+            font-size: rem(14);
+            padding: rem(8) rem(13);
+
+            &:not(:last-child) {
+                margin-right: rem(15);
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &-info {
+        @include media-query("medium") {
+            display: flex;
+            justify-content: center;
+            column-gap: rem(25);
+            margin-top: rem(30);
+        }
+    }
+
+    &-score {
+        text-align: center;
+
+        @include media-query("medium") {
+            font-size: rem(16);
+        }
+    }
+
+    &-btn {
+        border-radius: rem(10);
+        padding: rem(12);
+
+        @include media-query("medium") {
+            font-size: rem(15);
+            padding: rem(15) rem(30);
+            border-radius: rem(15);
+        }
+
+        &-check {
+            width: 100%;
+            margin-top: rem(20);
+
+            @include media-query("medium") {
+                width: auto;
+                display: flex;
+                margin: rem(25) auto 0;
+            }
+        }
+
+        &-play {
+            width: 100%;
+
+            @include media-query("medium") {
+                width: auto;
+            }
+        }
+    }
+}

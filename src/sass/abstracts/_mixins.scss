@@ -1,0 +1,14 @@
+@use "variables" as *;
+@use "functions" as *;
+
+@mixin media-query($value) {
+    $size: null;
+    @if type-of($value) == string {
+        $size: validate-key($breakpoints, $value);
+    } @else {
+        $size: not-unitless($value);
+    }
+    @media (min-width: $size) {
+        @content;
+    }
+}

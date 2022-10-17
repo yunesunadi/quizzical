@@ -1,0 +1,37 @@
+:root {
+    --ff-primary: "Karla", sans-serif;
+    --ff-secondary: "Inter", sans-serif;
+}
+
+$font-family: (
+    "primary": var(--ff-primary),
+    "secondary": var(--ff-secondary),
+);
+
+$font-weights: (
+    "medium": 500,
+    "semibold": 600,
+    "bold": 700,
+);
+
+$colors: (
+    "primary": hsl(231, 42%, 28%),
+    "btn-text": hsl(230, 43%, 97%),
+);
+
+$background-colors: (
+    "body": hsl(214, 47%, 97%),
+    "btn": hsl(230, 34%, 46%),
+    "selected": hsl(230, 61%, 90%),
+    "correct": hsl(133, 46%, 71%),
+    "wrong": hsl(0, 81%, 85%),
+    "hr": hsl(231, 41%, 90%),
+);
+
+$breakpoints: (
+    "small": 23.4375em /* 375px */,
+    "medium": 48em /* 768px */,
+    "large": 62em /* 992px */,
+    "x-large": 75em /* 1200px */,
+    "max-width": 90em /* 1440px */,
+);
