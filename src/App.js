@@ -14,6 +14,7 @@ export default function App() {
     const [isDisabled, setIsDisabled] = useState(true);
     const [isLoading, setIsLoading] = useState(true);
     const [isCheckedAnswers, setIsCheckedAnswers] = useState(false);
+    const [isPlayedAgain, setIsPlayedAgain] = useState(false);
 
     useEffect(() => {
         const getQuizzes = async () => {
@@ -64,7 +65,7 @@ export default function App() {
         };
 
         getQuizzes();
-    }, [isStarted]);
+    }, [isPlayedAgain]);
 
     useEffect(() => {
         const allSelectedAnswers = quiz
@@ -115,7 +116,7 @@ export default function App() {
 
     const playAgain = () => {
         setIsLoading(true);
-        setIsStarted(false);
+        setIsPlayedAgain((isPlayedAgain) => !isPlayedAgain);
         setIsCheckedAnswers(false);
     };
 
